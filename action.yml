@@ -1,6 +1,8 @@
 name: Version Bump
 description: Bump the version of a project
-main: 'dist/index.js'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
 inputs:
   current: 
     description: The file to bump the version in
