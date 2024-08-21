@@ -1,0 +1,22 @@
+name: Version Bump
+description: Bump the version of a project
+inputs:
+  current: 
+    description: The file to bump the version in
+    required: false
+  increment:
+    description: The increment to apply to the version
+    required: true
+    default: "patch"
+    options:
+      - "major"
+      - "minor"
+      - "patch"
+  snapshot:
+    description: Whether to add a snapshot tag to the version
+    required: false
+    default: false
+outputs:
+  version:
+    description: The new version
+  
