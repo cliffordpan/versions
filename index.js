@@ -13,22 +13,7 @@ const core = require("@actions/core");
 const VERSION_REGEX = /(?<major>\d+)(\.(?<minor>\d+))?(\.(?<patch>\d+))?/i;
 
 const getOldVersion = async () => {
-    const fileName = core.getInput("file");
-    if (fileName == null || fileName == "") {
-        return "0.0.0";
-    }
-    const files = await io.findInPath(fileName);
-    if (files == null && files.length == 0) {
-        return "0.0.0";
-    }
-    try {
-        const data = await fs.readFile(fileName, "utf-8");
-        const version = data.split('\n')[0];
-        return version;
-    } catch (err) {
-        console.error(err);
-        throw err;
-    }
+    return core.getInput("current");
 }
 
 const calcVersion = async (oldVersion) => {
@@ -72,20 +57,9 @@ const calcVersion = async (oldVersion) => {
     }
 };
 
-const saveVersion = async (version) => {
-    const fileName = core.getInput("file") || "./version.txt";
-    try {
-        await fs.writeFile(fileName, version);
-        return version;
-    } catch (err) {
-        console.error(err);
-        throw err;
-    }
-};
 
 getOldVersion()
     .then(calcVersion)
-    .then(saveVersion)
     .then((result) => {
         console.log("New version: " + result);
         core.setOutput("version", result);
