@@ -16,12 +16,12 @@ try {
         result = "0.0.0";
     }
 
-    if (snapshot === "true") {
+    if (snapshot == "true") {
         snapshot = true;
     } else {
         snapshot = false;
     }
-
+    console.log("Is snapshot: " + snapshot);
     switch (increment) {
         case "major":
             result = result.replace(VERSION_REGEX, (match, major, minor, patch, _) => {
