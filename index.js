@@ -1,7 +1,7 @@
 /**
  * Github Action for incrementing version numbers
  * 
- * @param {string} current - The current version
+ * @param {string} currentVersion - The current version
  * @param {string} increment - The type of increment (major, minor, patch)
  * @param {string} prefix - The prefix for the new version number
  * @param {string} suffix - The suffix for the new version number
@@ -13,7 +13,7 @@ const core = require("@actions/core");
 const VERSION_REGEX = /(?<major>\d+)(\.(?<minor>\d+))?(\.(?<patch>\d+))?/i;
 
 const getOldVersion = async () => {
-    return core.getInput("current");
+    return core.getInput("currentVersion");
 }
 
 const calcVersion = async (oldVersion) => {
