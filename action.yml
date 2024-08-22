@@ -4,21 +4,20 @@ runs:
   using: 'node20'
   main: 'dist/index.js'
 inputs:
-  current: 
-    description: The file to bump the version in
+  currentVersion:
+    description: The current version of the project
     required: false
+    default: "0.0.0"
   increment:
     description: The increment to apply to the version
     required: true
     default: "patch"
-    options:
-      - "major"
-      - "minor"
-      - "patch"
-  snapshot:
-    description: Whether to add a snapshot tag to the version
+  prefix:
+    description: The prefix to add to the version
     required: false
-    default: false
+  surfix:
+    description: The sufix to add to the version
+    required: false
 outputs:
   version:
     description: The new version
