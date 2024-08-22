@@ -41,6 +41,7 @@ try {
         default:
             throw new Error("Invalid increment type");
     }
+    console.log("New Version: " + result);
     core.setOutput("version", result);
 } catch (error) {
     core.setFailed(error.message);
