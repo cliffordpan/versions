@@ -5,7 +5,7 @@ const VERSION_REGEX = /(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(?<snapshot>-s
 try {
     const current = core.getInput("current");
     const increment = core.getInput("increment");
-    const snapshot = core.getInput("snapshot");
+    let snapshot = core.getInput("snapshot");
     let result;
     if (!!current) {
         console.log("Current Version: " + current);
@@ -14,6 +14,12 @@ try {
         result = current;
     } else {
         result = "0.0.0";
+    }
+
+    if (snapshot === "true") {
+        snapshot = true;
+    } else {
+        snapshot = false;
     }
 
     switch (increment) {
