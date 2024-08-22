@@ -15,8 +15,8 @@ inputs:
   prefix:
     description: The prefix to add to the version
     required: false
-  surfix:
-    description: The sufix to add to the version
+  suffix:
+    description: The suffix to add to the version
     required: false
 outputs:
   version:

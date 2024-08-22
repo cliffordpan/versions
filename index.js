@@ -38,25 +38,25 @@ const calcVersion = async (oldVersion) => {
     const patch = match.groups.patch;
     const increment = core.getInput("increment");
     const prefix = core.getInput("prefix");
-    const surfix = core.getInput("suffix");
+    const suffix = core.getInput("suffix");
     if (!!patch) {
         switch (increment) {
             case "major":
-                return `${prefix || ""}${parseInt(major) + 1}.0.0${surfix || ""}`;
+                return `${prefix || ""}${parseInt(major) + 1}.0.0${suffix || ""}`;
             case "minor":
-                return `${prefix || ""}${major}.${parseInt(minor) + 1}.0${surfix || ""}`;
+                return `${prefix || ""}${major}.${parseInt(minor) + 1}.0${suffix || ""}`;
             case "patch":
-                return `${prefix || ""}${major}.${minor}.${parseInt(patch) + 1}${surfix || ""}`;
+                return `${prefix || ""}${major}.${minor}.${parseInt(patch) + 1}${suffix || ""}`;
             default:
                 throw new Error("Invalid increment type");
         }
     } else if (!!minor) {
         switch (increment) {
             case "major":
-                return `${prefix || ""}${parseInt(major) + 1}.0${surfix || ""}`;
+                return `${prefix || ""}${parseInt(major) + 1}.0${suffix || ""}`;
             case "minor":
             case "patch":
-                return `${prefix || ""}${major}.${parseInt(minor) + 1}${surfix || ""}`;
+                return `${prefix || ""}${major}.${parseInt(minor) + 1}${suffix || ""}`;
             default:
                 throw new Error("Invalid increment type");
         }
@@ -65,7 +65,7 @@ const calcVersion = async (oldVersion) => {
             case "major":
             case "minor":
             case "patch":
-                return `${prefix || ""}${parseInt(major) + 1}${surfix || ""}`;
+                return `${prefix || ""}${parseInt(major) + 1}${suffix || ""}`;
             default:
                 throw new Error("Invalid increment type");
         }
